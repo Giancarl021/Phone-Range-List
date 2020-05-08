@@ -5,7 +5,7 @@ import { Light } from '../../common/colors';
 
 export default function() {
     return (
-        <FixedButton>
+        <FixedButton onPress={props.onClick || (() => {})}>
             <Feather name="edit-2" size={30} color={Light.Text}/>
         </FixedButton>
     );
