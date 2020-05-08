@@ -11,7 +11,7 @@ export const Container = styled.View`
     height: 100%;
     background-color: ${Main.Background};
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 `;
 
 export const Text = styled.Text`

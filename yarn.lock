@@ -1281,6 +1281,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@unform/mobile@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@unform/mobile/-/mobile-2.1.0.tgz#2ba964840277ec13d028c428b3d401190b7a2205"
+  integrity sha512-2vtuTJSvho+kIkz/BpTeddH0eRogVgchFpRjlVfOwSe8BU2DgJks5lw9J7ghPuy/SqVzyrnpSziBDFVl/4IO0A==
+
 "@unimodules/core@~5.1.0":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-5.1.2.tgz#44de60184c9a50cf57bc8ec1cd024810a72ecf3e"

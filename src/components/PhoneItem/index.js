@@ -11,7 +11,7 @@ export default function(props) {
 
     return (
         <Container>
-            <Title>{name}</Title>
+            <Title>{name || 'Sem nome'}</Title>
             <Subtitle>{formatNumber(number)}</Subtitle>
             <ButtonContainer>
                 <Button onClick={() => {Linking.openURL(`tel:${number}`)}} icon="phone-call" size={buttonSize}/>

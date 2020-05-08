@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { Container, Title, Header, List as PhoneList, SimpleText } from './styles';
 
 import PhoneItem from '../../components/PhoneItem';
@@ -7,26 +7,37 @@ import AddButton from '../../components/AddButton';
 
 export default function() {
 
-    const [numbers, setNumbers] = useState([1,2,3]);
+    const [people, setPeople] = useState([
+        {
+            name: 'Jerusa Fontela da Luz',
+            number: '+5551999503886'
+        }
+    ]);
+
+    const navigation = useNavigation();
+
+    function onAdd(name, number) {
+        setPeople(...people, { name, number });
+    }
 
     return (
         <Container>
             <Header>
                 <Title>Números Telefônicos</Title>
             </Header>
-            { numbers.length > 0 ? (
+            { people.length > 0 ? (
                 <PhoneList
-                data={numbers}
-                keyExtractor={item => String(item)}
+                data={people}
+                keyExtractor={person => person.number}
                 showsVerticalScrollIndicator={false}
-                renderItem={phone => (
-                    <PhoneItem name={'Jerusa Luz'} number={'+5551999503886'} onEdit={() => {}} onDelete={() => {}}/>
+                renderItem={({ item: person }) => (
+                    <PhoneItem name={person.name || 'Jerusa Fontela da Luz'} number={person.number || '+5551992317903'} onEdit={() => {}} onDelete={() => {}}/>
                 )}
             />
             ) : (
                 <SimpleText>Parece que não tem nenhum número salvo ainda...</SimpleText>
             ) }
-            <AddButton onClick={() => {setNumbers([...numbers, numbers[numbers.length - 1] + 1])}}/>
+            <AddButton onClick={() => navigation.navigate('Add', { title: 'Adicionar número' })}/>
         </Container>
-    )
+    );
 }
