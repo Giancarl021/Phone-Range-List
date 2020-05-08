@@ -1,11 +1,9 @@
 {
   "expo": {
-    "name": "blank",
-    "slug": "blank",
+    "name": "Phone Range List",
+    "slug": "phonerangelist",
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
