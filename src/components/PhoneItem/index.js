@@ -1,8 +1,8 @@
 import React from 'react';
-import { Linking } from 'react-native'
-import { parsePhoneNumberFromString } from 'libphonenumber-js/min';
+import { Linking } from 'react-native';
 import Button from '../../components/Button';
 import { Container, Title, Subtitle, ButtonContainer } from './styles';
+import { formatNumber } from '../../util/format';
 
 export default function(props) {
     const { name, number, onDelete, onEdit } = props;
@@ -12,7 +12,7 @@ export default function(props) {
     return (
         <Container>
             <Title>{name || 'Sem nome'}</Title>
-            <Subtitle>{formatNumber(number)}</Subtitle>
+            <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
             <ButtonContainer>
                 <Button onClick={() => {Linking.openURL(`tel:${number}`)}} icon="phone-call" size={buttonSize}/>
                 <Button onClick={() => {Linking.openURL(`whatsapp://send?text=${message}&phone=${number}`)}} icon="whatsapp" size={buttonSize}/>
@@ -22,10 +22,4 @@ export default function(props) {
             </ButtonContainer>
         </Container>
     );
-
-    function formatNumber(phoneNumber) {
-        const number = parsePhoneNumberFromString(phoneNumber);
-        if(!number) return 'Número inválido';
-        return number.formatNational();
-    }
 }

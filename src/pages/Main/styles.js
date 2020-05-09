@@ -9,14 +9,14 @@ export const Header = styled.View`
     width: 100%;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
     padding: 0 20px;
 `;
 
 export const Title = styled(GlobalText)`
     font-size: 24px;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 `;
 
 export const List = styled(FlatList)`

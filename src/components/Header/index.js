@@ -1,17 +1,17 @@
 import React from 'react';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { Container, ReturnButton, Title } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { Container, Button, Title } from './styles';
 
 export default function(props) {
 
-    const route = useRoute();
     const navigation = useNavigation();
-    const { title } = route.params;
+    const { title } = props;
 
     return (
         <Container>
-            <ReturnButton icon="arrow-left" onClick={navigation.goBack}/>
+            <Button icon="arrow-left" onClick={navigation.goBack}/>
             <Title>{title}</Title>
+            <Button icon="check" onClick={navigation.goBack}/>
         </Container>
     );
 }
