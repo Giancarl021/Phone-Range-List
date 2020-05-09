@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, Input, Label, Form, Header, Button, Title } from './styles';
-import { formatNumber } from '../../util/format';
-import { addToArray } from '../../services/LocalStoragee';
+import { formatNumber, unformatNumber } from '../../util/format';
+import { addToArray } from '../../services/LocalStorage';
 
 export default function() {
     const [number, setNumber] = useState('');
@@ -70,7 +70,7 @@ export default function() {
         const first = Number(number.replace(/\D/g, ''));
         const q = quantity;
         for(let i = 0; i < quantity; i++) {
-            numbers.push({name: '', number: '+' + (first + i)});
+            numbers.push({name: '', number: unformatNumber(first + i)});
         }
         try {
             await addToArray('lists', {

@@ -12,7 +12,7 @@ export default function() {
 
     useFocusEffect(() => {
         updateList().catch(console.log); 
-    })
+    }, [])
 
     async function updateList() {
         const data = await getData('lists');
@@ -21,7 +21,6 @@ export default function() {
     }
 
     const navigation = useNavigation();
-
     return (
         <Container>
             <Header>
