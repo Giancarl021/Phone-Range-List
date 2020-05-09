@@ -7,28 +7,30 @@ import { addToArray } from '../../util/LocalStorage';
 export default function() {
     const [number, setNumber] = useState('');
     const [isValid, setIsValid] = useState(true);
+    const [quantity, setQuantity] = useState('100');
     const navigation = useNavigation();
-    
+
     return (
         <Container>
             <Header>
                 <Button icon="arrow-left" onClick={navigation.goBack}/>
                 <Title>Criar lista telefônica</Title>
-                <Button icon="check" onClick={navigation.goBack}/>
+                <Button icon="check" onClick={saveList}/>
             </Header>
             <Form>
                 <Label>Nome da Lista</Label>
                 <Input autoCorrect={false}/>
                 <Label>Primeiro número</Label>
-                <Input valid={isValid} autoCompleteType="tel" keyboardType="phone-pad" placeholder="(XX) XXXXXXXXX" value={number} onBlur={verifyNumber} onChangeText={setNumber}/>
+                <Input valid={isValid} autoCompleteType="tel" keyboardType="phone-pad" placeholder="+XX (XX) XXXXXXXXX" defaultValue={number} onBlur={verifyNumber} onChangeText={setNumber}/>
                 <Label>Quantidade de números</Label>
-                <Input defaultValue="100"/>
+                <Input defaultValue={String(quantity)} onChangeText={text => {setQuantity(Number(text))}}/>
             </Form>
         </Container>
     );
 
     function verifyNumber() {
-        const formattedNumber = formatNumber(number.replace(/\D/g, ''));
+        const formattedNumber = formatNumber('+' + number.replace(/\D/g, ''));
+        console.log(number, formattedNumber);
         if(!formattedNumber) {
             setIsValid(false);
         } else {
@@ -37,13 +39,16 @@ export default function() {
         }
     }
 
-    async function saveList() {
+    function saveList() {
         const numbers = [];
+        const first = number.replace(/\D/g, '');
+        const q = quantity;
+        console.log(first, q);
+        for(let i = Number(first); i < first + q; i++) {
+            numbers.push(i);
+        }
+        // await addToArray('lists', {
 
-        
-
-        await addToArray('lists', {
-
-        });
+        // });
     }
 }
