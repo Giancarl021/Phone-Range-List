@@ -1,3 +1,6 @@
+# Local / Temp Files
+*.bat
+
 node_modules/**/*
 .expo/*
 npm-debug.*
