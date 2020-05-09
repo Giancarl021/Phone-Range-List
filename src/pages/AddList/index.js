@@ -1,34 +1,49 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
-import { Container, Input, Label, Form } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { Container, Input, Label, Form, Header, Button, Title } from './styles';
 import { formatNumber } from '../../util/format';
+import { addToArray } from '../../util/LocalStorage';
 
 export default function() {
     const [number, setNumber] = useState('');
-    const [isValidNumber, setIsValidNumber] = useState(true);
+    const [isValid, setIsValid] = useState(true);
+    const navigation = useNavigation();
+    
     return (
         <Container>
-            <Header title="Adicionar Lista Telefônica"/>
+            <Header>
+                <Button icon="arrow-left" onClick={navigation.goBack}/>
+                <Title>Criar lista telefônica</Title>
+                <Button icon="check" onClick={navigation.goBack}/>
+            </Header>
             <Form>
                 <Label>Nome da Lista</Label>
                 <Input autoCorrect={false}/>
                 <Label>Primeiro número</Label>
-                <Input autoCompleteType="tel" keyboardType="phone-pad" placeholder="+XX XX XXXXXXXXX" value={number} onBlur={verifyNumber} onChangeText={setNumber}/>
+                <Input valid={isValid} autoCompleteType="tel" keyboardType="phone-pad" placeholder="(XX) XXXXXXXXX" value={number} onBlur={verifyNumber} onChangeText={setNumber}/>
                 <Label>Quantidade de números</Label>
                 <Input defaultValue="100"/>
             </Form>
         </Container>
     );
 
-    function verifyNumber(number) {
-        console.log(number);
-        const formattedNumber = formatNumber(number);
+    function verifyNumber() {
+        const formattedNumber = formatNumber(number.replace(/\D/g, ''));
         if(!formattedNumber) {
-            setIsValidNumber(false);
-            setNumber('');
+            setIsValid(false);
         } else {
-            setIsValidNumber(true);
+            setIsValid(true);
             setNumber(formattedNumber);
         }
+    }
+
+    async function saveList() {
+        const numbers = [];
+
+        
+
+        await addToArray('lists', {
+
+        });
     }
 }

@@ -1,6 +1,25 @@
 import styled from 'styled-components/native';
 import { Container as GlobalContainer, Text as GlobalText } from '../../common/styles';
 import { Shadow, Light, Main } from '../../common/colors';
+import ComponentButton from '../../components/Button';
+
+export const Header = styled.View`
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    margin-bottom: 30px;
+`;
+
+export const Button = styled(ComponentButton)`
+`;
+
+export const Title = styled(GlobalText)`
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+`;
 
 export const Container = styled(GlobalContainer)`
     background-color: ${Light.Background};
