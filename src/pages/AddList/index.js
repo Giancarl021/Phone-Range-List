@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, Input, Label, Form, Header, Button, Title } from './styles';
 import { formatNumber, unformatNumber } from '../../util/format';
-import { addToArray } from '../../services/LocalStorage';
+import { addToPhoneList } from '../../services/LocalStorage';
 
 export default function() {
     const [number, setNumber] = useState('');
@@ -73,7 +73,7 @@ export default function() {
             numbers.push({name: '', number: unformatNumber(first + i)});
         }
         try {
-            await addToArray('lists', {
+            await addToPhoneList({
                 id: Date.now().toString(16),
                 name,
                 numbers

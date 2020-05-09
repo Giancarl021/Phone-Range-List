@@ -4,7 +4,7 @@ import { Container, Title, Header, List as ListsList, SimpleText } from './style
 
 import ListItem from '../../components/ListItem';
 import AddButton from '../../components/AddButton';
-import { getData, removeFromArray } from '../../services/LocalStorage';
+import { getData, removeFromPhoneList } from '../../services/LocalStorage';
 
 export default function() {
 
@@ -33,7 +33,7 @@ export default function() {
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item: list }) => (
                         <ListItem name={list.name || 'Lista sem nome'} id={list.id} numbers={list.numbers} onDelete={() => {
-                            removeFromArray('lists', item => list.id !== item.id).then(updateList);
+                            removeFromPhoneList(list.id).then(updateList);
                         }}/>
                     )}
                 /> :

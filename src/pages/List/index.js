@@ -25,7 +25,7 @@ export default function(props) {
                 keyExtractor={phone => phone.number}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: phone }) => (
-                    <PhoneItem name={phone.name || 'Sem nome'} number={phone.number} onEdit={() => {}} onDelete={() => {}}/>
+                    <PhoneItem name={phone.name || 'Sem nome'} number={phone.number} onEdit={() => {}}/>
                 )}
             />
         </Container>
