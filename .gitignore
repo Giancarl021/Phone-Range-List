@@ -1,5 +1,5 @@
 # Local / Temp Files
-*.bat
+**/*.bat
 
 node_modules/**/*
 .expo/*
