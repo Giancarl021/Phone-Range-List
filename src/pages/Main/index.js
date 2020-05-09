@@ -15,7 +15,7 @@ export default function() {
     }, [])
 
     async function updateList() {
-        const data = await getData('lists');
+        const data = (await getData('lists')) || '[]';
         const lists = JSON.parse(data);
         setLists(lists);
     }
