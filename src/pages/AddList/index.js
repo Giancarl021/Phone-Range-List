@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, Input, Label, Form, Header, Button, Title } from './styles';
 import { formatNumber } from '../../util/format';
-import { addToArray } from '../../util/LocalStorage';
+import { addToArray } from '../../services/LocalStoragee';
 
 export default function() {
     const [number, setNumber] = useState('');

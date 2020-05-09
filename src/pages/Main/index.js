@@ -4,7 +4,7 @@ import { Container, Title, Header, List as ListsList, SimpleText } from './style
 
 import ListItem from '../../components/ListItem';
 import AddButton from '../../components/AddButton';
-import { getData, removeFromArray } from '../../util/LocalStorage';
+import { getData, removeFromArray } from '../../services/LocalStorage';
 
 export default function() {
 
