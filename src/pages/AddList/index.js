@@ -31,6 +31,7 @@ export default function() {
 
     function validate(input) {
         const data = { name, number, quantity }
+        let valid = false;
         if(input) {
             if(input.hasOwnProperty('name')) {
                 setName(input.name);
@@ -44,44 +45,42 @@ export default function() {
             }
         }
 
-        if((!data.name) || (!data.number) || (!data.quantity)) {
-            setIsValid(false);
-            return;
-        }
-
-        console.log(data.number);
-
         if(data.quantity > 300) {
             setQuantity(300);
-            setIsValid(true);
-            return;
+            valid = true;
         }
 
-        const formattedNumber = formatNumber('+55' + data.number.replace(/\D/g, ''));
+        const formattedNumber = formatNumber(data.number);
         if(!formattedNumber) {
-            setIsValid(false);
+            valid = false;
             return;
         } else {
-            setIsValid(true);
+            valid = true;
             setNumber(formattedNumber);
-            return;
         }
+
+        if((!data.name) || (!data.number) || (!data.quantity)) {
+            valid = false;
+        }
+        setIsValid(valid);
     }
 
     async function saveList() {
-        if(!validate()) return;
-        if(!isValid) return;
         const numbers = [];
         const first = Number(number.replace(/\D/g, ''));
         const q = quantity;
         for(let i = 0; i < quantity; i++) {
             numbers.push({name: '', number: '+' + (first + i)});
         }
-
-        await addToArray('lists', {
-            id: Date.now().toString(16),
-            name,
-            numbers
-        });
+        try {
+            await addToArray('lists', {
+                id: Date.now().toString(16),
+                name,
+                numbers
+            });
+        } catch(err) {
+            console.log(err);
+        }
+        navigation.goBack();
     }
 }

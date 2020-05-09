@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Container, Title, Header, List as PhoneList, SimpleText } from './styles';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { Container, Title, Header, List as ListsList, SimpleText } from './styles';
 
-import PhoneItem from '../../components/PhoneItem';
+import ListItem from '../../components/ListItem';
 import AddButton from '../../components/AddButton';
-import { getData, setData } from '../../util/LocalStorage';
+import { getData, removeFromArray } from '../../util/LocalStorage';
 
 export default function() {
 
     const [lists, setLists] = useState([]);
 
-    useEffect(() => {
-        getData('lists').then(setLists)
-    }, []);
+    useFocusEffect(() => {
+        updateList().catch(console.log); 
+    })
+
+    async function updateList() {
+        const data = await getData('lists');
+        const lists = JSON.parse(data);
+        setLists(lists);
+    }
 
     const navigation = useNavigation();
 
@@ -22,13 +28,15 @@ export default function() {
                 <Title>Listas Telefônicas</Title>
             </Header>
             { lists.length > 0 ?
-                <PhoneList
-                data={lists}
-                keyExtractor={person => person.number}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item: person }) => (
-                    <PhoneItem name={person.name || 'Sem nome'} number={person.number} onEdit={() => {}} onDelete={() => {}}/>
-                )}
+                <ListsList
+                    data={lists}
+                    keyExtractor={list => list.id}
+                    showsVerticalScrollIndicator={false}
+                    renderItem={({ item: list }) => (
+                        <ListItem name={list.name || 'Lista sem nome'} id={list.id} numbers={list.numbers} onDelete={() => {
+                            removeFromArray('lists', item => list.id !== item.id).then(updateList);
+                        }}/>
+                    )}
                 /> :
                 <SimpleText>Parece que não tem nenhuma lista salva ainda...</SimpleText>
             }

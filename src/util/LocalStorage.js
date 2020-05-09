@@ -11,5 +11,11 @@ export async function getData(key, placeholder = '') {
 export async function addToArray(key, item) {
     const current = JSON.parse(await AsyncStorage.getItem(key)) || [];
     current.push(item);
-    await AsyncStorage.setItem(key, current);
+    await AsyncStorage.setItem(key, JSON.stringify(current));
+}
+
+export async function removeFromArray(key, predicate) {
+    const current = JSON.parse(await AsyncStorage.getItem(key));
+    if(!current) return;
+    await AsyncStorage.setItem(key, JSON.stringify(current.filter(predicate)));
 }
