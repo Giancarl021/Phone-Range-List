@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native';
 
 const phoneListKey = 'lists';
+const statusHistoryKey = 'status';
 
 export async function setData(key, value) {
     await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -22,8 +23,18 @@ export async function removeFromPhoneList(id) {
     await setData(phoneListKey, current.filter(list => id !== list.id));
 }
 
+/**
+ * {'listId': {'phoneNumber': ['NA', 'NE', 'NA']}}
+ */
+
 export async function getStatusFromPhone(listId, phoneNumber) {
-    const status = await getData();
+    const status = await getData(statusHistoryKey, {});
+    if(status.length && status[listId] && status[listId][phoneNumber]) {
+        const history = status[listId][phoneNumber];
+        return history;
+    } else {
+        return [];
+    }
 }
 
 export async function addStatusToPhone(listId, phoneNumber) {
