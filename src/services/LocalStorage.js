@@ -3,21 +3,29 @@ import { AsyncStorage } from 'react-native';
 const phoneListKey = 'lists';
 
 export async function setData(key, value) {
-    await AsyncStorage.setItem(key, value);
+    await AsyncStorage.setItem(key, JSON.stringify(value));
 }
 
-export async function getData(key, placeholder = '') {
-    return (await AsyncStorage.getItem(key)) || placeholder;
+export async function getData(key, placeholder = {}) {
+    return JSON.parse(await AsyncStorage.getItem(key)) || placeholder;
 }
 
 export async function addToPhoneList(item) {
-    const current = JSON.parse(await AsyncStorage.getItem(phoneListKey)) || [];
+    const current = await getData(phoneListKey, []);
     current.push(item);
-    await AsyncStorage.setItem(phoneListKey, JSON.stringify(current));
+    await setData(phoneListKey, current);
 }
 
 export async function removeFromPhoneList(id) {
-    const current = JSON.parse(await AsyncStorage.getItem(phoneListKey));
+    const current = await getData(phoneListKey);
     if(!current) return;
-    await AsyncStorage.setItem(phoneListKey, JSON.stringify(current.filter(list => id !== list.id)));
+    await setData(phoneListKey, current.filter(list => id !== list.id));
+}
+
+export async function getStatusFromPhone(listId, phoneNumber) {
+    const status = await getData();
+}
+
+export async function addStatusToPhone(listId, phoneNumber) {
+
 }

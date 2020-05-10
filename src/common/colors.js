@@ -12,3 +12,8 @@ export const Light = {
     Background: '#624',
     Text: '#ffe'
 }
+
+export const StatusBarColor = {
+    Text: 'light-content',
+    Background: Main.Background
+}

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { Container, Title, Header, List as ListsList, SimpleText } from './styles';
-
 import ListItem from '../../components/ListItem';
 import AddButton from '../../components/AddButton';
 import { getData, removeFromPhoneList } from '../../services/LocalStorage';
+import StatusBar from '../../components/StatusBar';
+import { Main } from '../../common/colors';
 
 export default function() {
 
@@ -15,14 +16,14 @@ export default function() {
     }, [])
 
     async function updateList() {
-        const data = (await getData('lists')) || '[]';
-        const lists = JSON.parse(data);
+        const lists = await getData('lists', []);
         setLists(lists);
     }
 
     const navigation = useNavigation();
     return (
         <Container>
+            <StatusBar backgroundColor={Main.Background}/>
             <Header>
                 <Title>Listas Telefônicas</Title>
             </Header>

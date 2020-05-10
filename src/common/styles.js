@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import { Main, Light } from './colors';
 
 export const Container = styled.View`
-    padding-top: ${Constants.statusBarHeight + 20}px;
+    padding-top: ${Constants.statusBarHeight}px;
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;

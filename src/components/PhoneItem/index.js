@@ -5,12 +5,12 @@ import { Container, Title, Subtitle, ButtonContainer } from './styles';
 import { formatNumber } from '../../util/format';
 
 export default function(props) {
-    const { name, number, onEdit } = props;
+    const { name, number, onEdit, status } = props;
     const message = '';
     const buttonSize = 25;
 
     return (
-        <Container>
+        <Container status={status}>
             <Title>{name || 'Sem nome'}</Title>
             <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
             <ButtonContainer>

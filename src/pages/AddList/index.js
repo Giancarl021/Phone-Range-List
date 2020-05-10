@@ -3,6 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Container, Input, Label, Form, Header, Button, Title } from './styles';
 import { formatNumber, unformatNumber } from '../../util/format';
 import { addToPhoneList } from '../../services/LocalStorage';
+import StatusBar from '../../components/StatusBar';
+import { Light } from '../../common/colors';
 
 export default function() {
     const [number, setNumber] = useState('');
@@ -13,6 +15,7 @@ export default function() {
 
     return (
         <Container>
+            <StatusBar backgroundColor={Light.Background} />
             <Header>
                 <Button icon="arrow-left" onClick={navigation.goBack}/>
                 <Title>Criar lista telefônica</Title>

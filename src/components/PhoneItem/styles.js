@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Shadow } from '../../common/colors';
+import { Shadow, Light } from '../../common/colors';
 import { Text as GlobalText } from '../../common/styles';
 
 const borderRadius = '10px';
@@ -7,8 +7,7 @@ const borderRadius = '10px';
 export const Container = styled.View`
     justify-content: flex-start;
     border-radius: ${borderRadius};
-    /* padding: 15px; */
-    background-color: ${Shadow.Background};
+    background-color: ${props => props.status ? Light.Background : Shadow.Background};
     width: 100%;
     margin-bottom: 5px;
 `;
@@ -37,5 +36,5 @@ export const ButtonContainer = styled.View`
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    background-color: #0003;
+    background-color: #0002;
 `;

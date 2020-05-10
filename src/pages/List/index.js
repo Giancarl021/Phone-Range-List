@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import Button from '../../components/Button';
 import PhoneItem from '../../components/PhoneItem';
 import { Container, List as PhoneList, Header, Title, SimpleText } from './styles';
-
+import StatusBar from '../../components/StatusBar';
+import { Main } from '../../common/colors';
 
 export default function(props) {
     const { name, numbers } = props.route.params;
@@ -18,6 +19,7 @@ export default function(props) {
 
     return (
         <Container>
+            <StatusBar backgroundColor={Main.Background}/>
             <Header>
                 <Button disabled={loading} icon="arrow-left" onClick={navigation.goBack}/>
                 <Title>{name}</Title>
@@ -27,7 +29,7 @@ export default function(props) {
                 keyExtractor={phone => phone.number}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: phone }) => (
-                    <PhoneItem name={phone.name || 'Sem nome'} number={phone.number} onEdit={() => {}}/>
+                    <PhoneItem name={phone.name || 'Sem nome'} number={phone.number} status={phone.status} onEdit={() => {}}/>
                 )}
             /> : <SimpleText>Carregando números...</SimpleText>}
         </Container>
