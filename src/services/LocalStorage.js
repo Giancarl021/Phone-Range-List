@@ -29,7 +29,7 @@ export async function removeFromPhoneList(id) {
 
 export async function getStatusFromPhone(listId, phoneNumber) {
     const status = await getData(statusHistoryKey, {});
-    if(status.length && status[listId] && status[listId][phoneNumber]) {
+    if(status[listId] && status[listId][phoneNumber]) {
         const history = status[listId][phoneNumber];
         return history;
     } else {
@@ -37,6 +37,16 @@ export async function getStatusFromPhone(listId, phoneNumber) {
     }
 }
 
-export async function addStatusToPhone(listId, phoneNumber) {
+export async function addStatusToPhone(listId, phoneNumber, statusCode) {
+    const status = await getData(statusHistoryKey, {});
+    if(!status[listId]) {
+        status[listId] = {};
+    }
+    if(!status[listId][phoneNumber]) {
+        status[listId][phoneNumber] = [];
+    }
 
+    const history = status[listId][phoneNumber];
+    history.push(statusCode);
+    await setData(statusHistoryKey, history);
 }
