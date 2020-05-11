@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Shadow, Light } from '../../common/colors';
+import { Shadow, Light, PhoneStatusColors } from '../../common/colors';
 import { Text as GlobalText } from '../../common/styles';
 
 const borderRadius = '10px';
@@ -37,4 +37,8 @@ export const ButtonContainer = styled.View`
     align-items: center;
     flex-direction: row;
     background-color: #0002;
+`;
+
+export const Status = styled.Text`
+    color: ${props => PhoneStatusColors[props.statusCode] || Shadow.Text};
 `;

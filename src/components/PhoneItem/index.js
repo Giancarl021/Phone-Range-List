@@ -1,7 +1,8 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import Button from '../../components/Button';
-import { Container, Title, Subtitle, ButtonContainer } from './styles';
+import { StatusName } from '../../util/status';
+import { Container, Title, Subtitle, Status, ButtonContainer } from './styles';
 import { formatNumber } from '../../util/format';
 
 export default function(props) {
@@ -12,7 +13,8 @@ export default function(props) {
     return (
         <Container status={status}>
             <Title>{name || 'Sem nome'}</Title>
-            <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
+                <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
+                {status || <Subtitle>Último status: <Status statusCode={status || 0}>{StatusName[status || 0]}</Status></Subtitle>}
             <ButtonContainer>
                 <Button onClick={() => {Linking.openURL(`tel:${number}`)}} icon="phone-call" size={buttonSize}/>
                 <Button onClick={() => {Linking.openURL(`sms:${number}`)}} icon="mail" size={buttonSize}/>

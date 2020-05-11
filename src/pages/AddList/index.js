@@ -5,7 +5,7 @@ import { formatNumber, unformatNumber } from '../../util/format';
 import { addToPhoneList } from '../../services/LocalStorage';
 import StatusBar from '../../components/StatusBar';
 import { Light } from '../../common/colors';
-import Status from '../../util/status';
+import { Status } from '../../util/status';
 
 export default function() {
     const [number, setNumber] = useState('');
