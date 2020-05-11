@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Shadow, Light, PhoneStatusColors } from '../../common/colors';
+import { Shadow, PhoneStatusColors } from '../../common/colors';
 import { Text as GlobalText } from '../../common/styles';
 
 const borderRadius = '10px';
