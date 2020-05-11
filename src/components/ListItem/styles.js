@@ -7,7 +7,6 @@ const borderRadius = '10px';
 export const Container = styled.View`
     justify-content: flex-start;
     border-radius: ${borderRadius};
-    /* padding: 15px; */
     background-color: ${Shadow.Background};
     width: 100%;
     margin-bottom: 5px;

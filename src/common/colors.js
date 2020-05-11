@@ -19,15 +19,15 @@ export const StatusBarColor = {
 }
 
 export const PhoneStatusColors = {
-    0: '#fff',
-    1: '#f7f',
-    2: '#77f',
-    3: '#ff7',
-    4: '#ddd',
-    5: '#ddd',
-    6: '#f55',
-    7: '#f00',
-    8: '#7ff',
-    9: '#aaa',
-    10: '#7f7'
+    0: '#fff', // UNDEFINED
+    1: '#f7f', // KID
+    2: '#77f', // EMPLOYEE
+    3: '#ff7', // OCCUPIED
+    4: '#ddd', // NO_ANSWER
+    5: '#ddd', // POSTAL_BOX
+    6: '#f55', // NOT_WANTED
+    7: '#f00', // NOT_CALL_AGAIN
+    8: '#7ff', // INDIFFERENT
+    9: '#aaa', // NO_EXISTS
+    10: '#7f7' // ACCEPTED
 };
