@@ -13,8 +13,8 @@ export default function(props) {
     return (
         <Container>
             <Title>{name || 'Sem nome'}</Title>
-                <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
-                <Subtitle>Último status: <Status statusCode={status || 0}>{StatusName[status || 0]}</Status></Subtitle>
+            <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
+            <Subtitle>Último status: <Status statusCode={status || 0}>{StatusName[status || 0]}</Status></Subtitle>
             <ButtonContainer>
                 <Button onClick={() => {Linking.openURL(`tel:${number}`)}} icon="phone-call" size={buttonSize}/>
                 <Button onClick={() => {Linking.openURL(`sms:${number}`)}} icon="mail" size={buttonSize}/>
