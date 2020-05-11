@@ -1,10 +1,12 @@
 import { AsyncStorage } from 'react-native';
 
 // Tables
+
 const phoneListKey = 'lists';
 const statusHistoryKey = 'status';
 
 // General functions
+
 /**
  * @async
  * @returns {void}
@@ -51,8 +53,8 @@ export async function removeFromPhoneList(id) {
 /**
  * @async
  * @returns {Promise<Array<object>>}
- * @param {*} listId 
- * @param {*} phoneNumber 
+ * @param {string} listId 
+ * @param {string} phoneNumber 
  */
 export async function getStatusFromPhone(listId, phoneNumber) {
     const status = await getData(statusHistoryKey, {});
@@ -71,7 +73,7 @@ export async function getStatusFromPhone(listId, phoneNumber) {
  * @param {string} phoneNumber 
  * @param {number} statusCode 
  */
-export async function addStatusToPhone(listId, phoneNumber, statusCode) {
+export async function addStatusToPhone(listId, phoneNumber, status) {
     const status = await getData(statusHistoryKey, {});
     if(!status[listId]) {
         status[listId] = {};
@@ -81,6 +83,6 @@ export async function addStatusToPhone(listId, phoneNumber, statusCode) {
     }
 
     const history = status[listId][phoneNumber];
-    history.push(statusCode);
+    history.push(status);
     await setData(statusHistoryKey, history);
 }
