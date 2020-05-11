@@ -7,7 +7,7 @@ const borderRadius = '10px';
 export const Container = styled.View`
     justify-content: flex-start;
     border-radius: ${borderRadius};
-    background-color: ${props => props.status ? Light.Background : Shadow.Background};
+    background-color: ${Shadow.Background};
     width: 100%;
     margin-bottom: 5px;
 `;

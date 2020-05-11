@@ -11,7 +11,7 @@ export default function(props) {
     const buttonSize = 25;
 
     return (
-        <Container status={status}>
+        <Container>
             <Title>{name || 'Sem nome'}</Title>
                 <Subtitle>{formatNumber(number) || 'Número inválido'}</Subtitle>
                 {status || <Subtitle>Último status: <Status statusCode={status || 0}>{StatusName[status || 0]}</Status></Subtitle>}
