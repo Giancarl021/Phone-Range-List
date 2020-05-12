@@ -29,7 +29,7 @@ export default function(props) {
                 keyExtractor={phone => phone.number}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: phone }) => (
-                    <PhoneItem listId={listId} name={phone.name || 'Sem nome'} number={phone.number} status={phone.status} onEdit={() => {}}/>
+                    <PhoneItem listId={listId} name={phone.name || 'Sem nome'} number={phone.number} status={phone.status}/>
                 )}
             /> : <SimpleText>Carregando números...</SimpleText>}
         </Container>

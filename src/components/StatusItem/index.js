@@ -10,7 +10,7 @@ export default function(props) {
 
     return (
         <Container>
-            <Text>{Intl.DateTimeFormat('pt-br').format(new Date())}</Text>
+            <Text>{date ? Intl.DateTimeFormat('pt-br').format(new Date(date)) : 'Sem data definida'}</Text>
             <Status statusCode={statusCode || 0}>{StatusName[statusCode || 0]}</Status>
             <Button icon="edit-2" onClick={() => {}} size={buttonSize}/>
             <Button icon="trash-2" onClick={() => {}} size={buttonSize}/>

@@ -7,7 +7,7 @@ import { Container, Title, Subtitle, Status, ButtonContainer } from './styles';
 import { formatNumber } from '../../util/format';
 
 export default function(props) {
-    const { name, number, onEdit, status } = props;
+    const { name, number, status } = props;
     const message = '';
     const buttonSize = 25;
 
@@ -27,7 +27,7 @@ export default function(props) {
                 <Button onClick={() => {Linking.openURL(`sms:${number}`)}} icon="mail" size={buttonSize}/>
                 <Button onClick={() => {Linking.openURL(`whatsapp://send?text=${message}&phone=${number}`)}} icon="whatsapp" size={buttonSize}/>
                 <Button onClick={goToHistory} icon="list" size={buttonSize}/>
-                <Button onClick={onEdit} icon="edit-2" size={buttonSize}/>
+                <Button onClick={() => {}} icon="edit-2" size={buttonSize}/>
             </ButtonContainer>
         </Container>
     );

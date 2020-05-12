@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import StatusBar from '../../components/StatusBar';
 import Button from '../../components/Button';
-import RegisterItem from '../../components/RegisterItem';
+import StatusItem from '../../components/StatusItem';
 import { Light } from '../../common/colors';
 import { Container, Header, Title, Footer, Registers, SimpleText } from './styles';
 import { getStatusFromPhone } from '../../services/LocalStorage';
@@ -37,12 +37,12 @@ export default function (props) {
                     keyExtractor={(_, index) => String(index)}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item: register }) => (
-                        <RegisterItem date={register.date} statusCode={register.status}/>
+                        <StatusItem date={register.date} statusCode={register.status || 0}/>
                     )}
             /> :
             <SimpleText>Parece que ainda não tem nenhum registro neste número...</SimpleText>}
             <Footer>
-                <Button icon="plus" onClick={() => {}} />
+                <Button icon="plus" onClick={() => navigation.navigate('AddStatus', {listId, number})} />
             </Footer>
         </Container>
     );
