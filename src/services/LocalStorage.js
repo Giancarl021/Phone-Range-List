@@ -73,7 +73,7 @@ export async function getStatusFromPhone(listId, phoneNumber) {
  * @param {string} phoneNumber 
  * @param {number} statusCode 
  */
-export async function addStatusToPhone(listId, phoneNumber, status) {
+export async function addStatusToPhone(listId, phoneNumber, statusCode) {
     const status = await getData(statusHistoryKey, {});
     if(!status[listId]) {
         status[listId] = {};
@@ -83,6 +83,6 @@ export async function addStatusToPhone(listId, phoneNumber, status) {
     }
 
     const history = status[listId][phoneNumber];
-    history.push(status);
+    history.push(statusCode);
     await setData(statusHistoryKey, history);
 }

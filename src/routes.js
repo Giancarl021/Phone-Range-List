@@ -17,7 +17,7 @@ export default function() {
                 <AppStack.Screen name="Main" component={Main}/>
                 <AppStack.Screen name="AddList" component={AddList}/>
                 <AppStack.Screen name="List" component={List}/>
-                {/* <AppStack.Screen name="History" component={History}/> */}
+                <AppStack.Screen name="History" component={History}/>
                 {/* <AppStack.Screen name="Phone" component={Phone}/> */}
             </AppStack.Navigator>
         </NavigationContainer>

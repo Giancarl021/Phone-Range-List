@@ -1,5 +1,7 @@
 # Local / Temp Files
 **/*.bat
+.idea/
+.vscode/
 
 node_modules/**/*
 .expo/*
