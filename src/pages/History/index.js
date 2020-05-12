@@ -2,20 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import StatusBar from '../../components/StatusBar';
 import Button from '../../components/Button';
+import RegisterItem from '../../components/RegisterItem';
 import { Light } from '../../common/colors';
-import { Container, Header, Title, Footer, Registers } from './styles';
+import { Container, Header, Title, Footer, Registers, SimpleText } from './styles';
+import { getStatusFromPhone } from '../../services/LocalStorage';
 import { formatNumber } from '../../util/format';
 
 export default function (props) {
     const [loading, setLoading] = useState(true);
+    const [history, setHistory] = useState([]);
 
     const navigation = useNavigation();
 
-    useEffect(() => {
-        setLoading(false);
-    }, []);
+    const { number, listId } = props.route.params;
 
-    const { number } = props.route.params;
+    useEffect(() => {
+        getStatusFromPhone(listId, number)
+        .then(data => {
+            setHistory(data);
+            setLoading(false);
+        });
+    }, []);
 
     return (
         <Container>
@@ -24,14 +31,18 @@ export default function (props) {
                 <Button disabled={loading} icon="arrow-left" onClick={navigation.goBack} />
                 <Title>{formatNumber(number)}</Title>
             </Header>
+            { history.length ? 
             <Registers
-                    data={[1,2,3,4,5,6,7,8,9,10,11,12,13,22,23,24,25,26,27,28,29,210,211,212]}
-                    keyExtractor={register => String(register)}
+                    data={history}
+                    keyExtractor={(_, index) => String(index)}
                     showsVerticalScrollIndicator={false}
-    renderItem={({ item: register }) => (<Title>{register}</Title>)}
-            />
+                    renderItem={({ item: register }) => (
+                        <RegisterItem date={register.date}/>
+                    )}
+            /> :
+            <SimpleText>Parece que ainda não tem nenhum registro neste número...</SimpleText>}
             <Footer>
-                <Button icon="plus" onClick={() => {}}></Button>
+                <Button icon="plus" onClick={() => {}} />
             </Footer>
         </Container>
     );

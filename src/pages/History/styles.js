@@ -12,7 +12,8 @@ export const Header = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px;
+    padding: 0 20px;
+    padding-top: 20px;
 `;
 
 export const Title = styled(GlobalText)`
@@ -35,6 +36,13 @@ export const Footer = styled.View`
 
 export const Registers = styled.FlatList`
     margin-top: 30px;
+    padding: 0 20px;
     width: 100%;
     margin-bottom: 60px;
+`;
+
+export const SimpleText = styled(GlobalText)`
+    margin-top: 30px;
+    color: ${Shadow.Text};
+    padding: 0 20px;
 `;

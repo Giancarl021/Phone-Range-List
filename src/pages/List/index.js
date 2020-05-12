@@ -7,7 +7,7 @@ import StatusBar from '../../components/StatusBar';
 import { Main } from '../../common/colors';
 
 export default function(props) {
-    const { name, numbers } = props.route.params;
+    const { name, numbers, listId } = props.route.params;
     const navigation = useNavigation();
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function(props) {
                 keyExtractor={phone => phone.number}
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item: phone }) => (
-                    <PhoneItem name={phone.name || 'Sem nome'} number={phone.number} status={phone.status} onEdit={() => {}}/>
+                    <PhoneItem listId={listId} name={phone.name || 'Sem nome'} number={phone.number} status={phone.status} onEdit={() => {}}/>
                 )}
             /> : <SimpleText>Carregando números...</SimpleText>}
         </Container>

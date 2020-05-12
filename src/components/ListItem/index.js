@@ -7,11 +7,11 @@ import { formatNumber } from '../../util/format';
 export default function(props) {
     const navigation = useNavigation();
     
-    const { name, numbers, onDelete } = props;
+    const { name, numbers, id, onDelete } = props;
     const buttonSize = 25;
     return (
         <Container>
-            <DataContainer onPress={() => {navigation.navigate('List', { name, numbers })}}>
+            <DataContainer onPress={() => {navigation.navigate('List', { name, numbers, listId: id })}}>
                 <Title>{name}</Title>
                 <Subtitle>Origem: {formatNumber(numbers[0].number)}</Subtitle>
             </DataContainer>
