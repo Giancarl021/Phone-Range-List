@@ -37,7 +37,7 @@ export default function (props) {
                     keyExtractor={(_, index) => String(index)}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item: register }) => (
-                        <RegisterItem date={register.date}/>
+                        <RegisterItem date={register.date} statusCode={register.status}/>
                     )}
             /> :
             <SimpleText>Parece que ainda não tem nenhum registro neste número...</SimpleText>}
