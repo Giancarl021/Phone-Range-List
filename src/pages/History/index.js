@@ -31,16 +31,16 @@ export default function (props) {
                 <Button disabled={loading} icon="arrow-left" onClick={navigation.goBack} />
                 <Title>{formatNumber(number)}</Title>
             </Header>
-            { history.length ? 
+            { history.length ?
             <Registers
                     data={history}
                     keyExtractor={(_, index) => String(index)}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item: register }) => (
-                        <StatusItem date={register.date} statusCode={register.status || 0}/>
+                        <StatusItem date={register.date} statusCode={register.status || 0} />
                     )}
             /> :
-            <SimpleText>Parece que ainda não tem nenhum registro neste número...</SimpleText>}
+            <SimpleText>Parece que ainda não tem nenhum registro neste número...</SimpleText> }
             <Footer>
                 <Button icon="plus" onClick={() => navigation.navigate('AddStatus', {listId, number})} />
             </Footer>

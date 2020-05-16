@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Container, Input, Label, Form, Header, Button, Title } from './styles';
+import { Container, Form, Header, Button, Title } from './styles';
 import { formatNumber, unformatNumber } from '../../util/format';
 import { addToPhoneList } from '../../services/LocalStorage';
 import StatusBar from '../../components/StatusBar';
@@ -23,12 +23,7 @@ export default function() {
                 <Button disabled={!isValid} icon="check" onClick={saveList}/>
             </Header>
             <Form>
-                <Label>Nome da Lista</Label>
-                <Input autoCorrect={false} onChangeText={text => validate({name: text})}/>
-                <Label>Primeiro número</Label>
-                <Input valid={isValid} autoCompleteType="tel" keyboardType="phone-pad" placeholder="(XX) XXXXX-XXXX" defaultValue={number} onChangeText={text => validate({number: text})}/>
-                <Label>Quantidade de números</Label>
-                <Input defaultValue={quantity ? String(quantity) : ''} keyboardType="number-pad" onChangeText={text => validate({quantity: text})}/>
+                
             </Form>
         </Container>
     );

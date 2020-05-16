@@ -13,15 +13,15 @@ export const Status = {
 };
 
 export const StatusName = {
-    0: 'Não definido',         // UNDEFINED
-    1: 'Criança',              // KID
-    2: 'Empregado(a) atendeu', // EMPLOYEE
-    3: 'Ocupado(a)',           // OCCUPIED
-    4: 'Ninguém atendeu',      // NO_ANSWER
-    5: 'Caixa postal',         // POSTAL_BOX
-    6: 'Não quis ouvir',       // NOT_WANTED
-    7: 'Não ligar novamente',  // NOW_CALL_AGAIN
-    8: 'Indiferente',          // INDIFFERENT
-    9: 'Não existe',           // NO_EXISTS
-    10: 'Aceitou'              // ACCEPTED
+    0:  'Não definido',         // UNDEFINED
+    1:  'Criança',              // KID
+    2:  'Empregado(a) atendeu', // EMPLOYEE
+    3:  'Ocupado(a)',           // OCCUPIED
+    4:  'Ninguém atendeu',      // NO_ANSWER
+    5:  'Caixa postal',         // POSTAL_BOX
+    6:  'Não quis ouvir',       // NOT_WANTED
+    7:  'Não ligar novamente',  // NOT_CALL_AGAIN
+    8:  'Indiferente',          // INDIFFERENT
+    9:  'Não existe',           // NO_EXISTS
+    10: 'Aceitou Revisita'      // ACCEPTED
 };

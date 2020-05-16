@@ -10,6 +10,7 @@ import { getStatusFromPhone } from '../../services/LocalStorage';
 export default function(props) {
     const { name, number, listId } = props;
     const [status, setStatus] = useState(0);
+    
     useEffect(() => {
         getStatusFromPhone(listId, number).then(status => {
             setStatus(status[status.length - 1] || 0);
