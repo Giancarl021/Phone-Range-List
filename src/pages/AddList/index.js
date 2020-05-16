@@ -5,7 +5,6 @@ import { formatNumber, unformatNumber } from '../../util/format';
 import { addToPhoneList } from '../../services/LocalStorage';
 import StatusBar from '../../components/StatusBar';
 import { Light } from '../../common/colors';
-import { Status } from '../../util/status';
 
 export default function() {
     const [number, setNumber] = useState('');
@@ -79,8 +78,7 @@ export default function() {
             await addToPhoneList({
                 id: Date.now().toString(16),
                 name,
-                numbers,
-                lastStatus: Status.UNDEFINED
+                numbers
             });
         } catch(err) {
             console.log(err);

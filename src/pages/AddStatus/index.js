@@ -1,5 +1,5 @@
-import React, { useState } from './node_modules/react';
-import { useNavigation } from './node_modules/@react-navigation/native';
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Container, Input, Label, Form, Header, Button, Title } from './styles';
 import { formatNumber, unformatNumber } from '../../util/format';
 import { addToPhoneList } from '../../services/LocalStorage';
